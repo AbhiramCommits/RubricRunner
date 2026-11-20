@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 from collections.abc import AsyncIterator
+from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import StreamingResponse
@@ -25,16 +26,18 @@ TERMINAL_STATUSES = {
 }
 
 
+def _run_options() -> list[Any]:
+    return [
+        selectinload(GradingRun.items)
+        .selectinload(GradingRunItem.submission)
+        .selectinload(Submission.student),
+        selectinload(GradingRun.versions),
+    ]
+
+
 def _load_run(session: Session, run_id: int) -> GradingRun | None:
     return session.scalars(
-        select(GradingRun)
-        .where(GradingRun.id == run_id)
-        .options(
-            selectinload(GradingRun.items)
-            .selectinload(GradingRunItem.submission)
-            .selectinload(Submission.student),
-            selectinload(GradingRun.versions),
-        )
+        select(GradingRun).where(GradingRun.id == run_id).options(*_run_options())
     ).first()
 
 
@@ -58,6 +61,19 @@ async def create_grading_run(
     run_id = enqueue_run(assignment_id, payload.prompt_version)
     await grading_queue.notify()
     return GradingRunQueued(run_id=run_id, status=RunStatus.queued.value)
+
+
+@router.get("/grading-runs", response_model=list[GradingRunOut])
+def list_grading_runs(
+    limit: int = 10, session: Session = Depends(get_session)
+) -> list[GradingRunOut]:
+    runs = session.scalars(
+        select(GradingRun)
+        .options(*_run_options())
+        .order_by(GradingRun.id.desc())
+        .limit(max(1, min(limit, 50)))
+    ).all()
+    return [grading_run_out(run) for run in runs]
 
 
 @router.get("/grading-runs/{run_id}", response_model=GradingRunOut)
