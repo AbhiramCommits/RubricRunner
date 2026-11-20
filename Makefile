@@ -3,7 +3,7 @@ PIP := api/.venv/bin/pip
 PYTEST := api/.venv/bin/pytest
 ALEMBIC := api/.venv/bin/alembic
 
-.PHONY: up down api-dev web-dev migrate seed test test-e2e eval lint fmt install
+.PHONY: up down api-dev web-dev migrate seed test test-e2e eval api-openapi lint fmt install
 
 up:
 	docker compose up -d postgres
@@ -36,6 +36,9 @@ test-e2e:
 
 eval:
 	PYTHONPATH=api api/.venv/bin/python eval/run_eval.py --prompt-versions v1_basic,v2_criterion_anchored
+
+api-openapi:
+	cd api && .venv/bin/python -c "import json; from app.main import app; print(json.dumps(app.openapi(), indent=2))" > ../openapi.json
 
 lint:
 	api/.venv/bin/ruff check api

@@ -36,5 +36,3 @@ playwright/.cache/
 
 # Data
 api/*.db
-eval/results/*.json
-!eval/results/.gitkeep

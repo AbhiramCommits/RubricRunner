@@ -1,0 +1,271 @@
+{
+  "prompt_version": "v1_basic",
+  "provider": "mock",
+  "model": "heuristic-v1",
+  "n": 12,
+  "criteria": {
+    "Thesis": {
+      "n": 12.0,
+      "exact_match_rate": 0.1667,
+      "within_1_rate": 0.5833,
+      "mae": 1.5
+    },
+    "Evidence": {
+      "n": 12.0,
+      "exact_match_rate": 0.0,
+      "within_1_rate": 0.25,
+      "mae": 2.1667
+    },
+    "Organization": {
+      "n": 12.0,
+      "exact_match_rate": 0.3333,
+      "within_1_rate": 0.9167,
+      "mae": 0.75
+    },
+    "Mechanics": {
+      "n": 12.0,
+      "exact_match_rate": 0.4167,
+      "within_1_rate": 1.0,
+      "mae": 0.5833
+    }
+  },
+  "overall_mae": 1.25,
+  "total_score_mae": 4.0,
+  "pearson_total": 0.9144,
+  "spearman_total": 0.9178,
+  "rubric_adherence_rate": 1.0,
+  "flagged": 11.0,
+  "flagged_rate": 0.9167,
+  "flagged_off_by_more_than_1": 10.0,
+  "flagged_precision": 0.9091,
+  "rows": [
+    {
+      "external_id": "S01",
+      "predicted": {
+        "Thesis": 4.0,
+        "Evidence": 6.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 5.0,
+        "Evidence": 9.0,
+        "Organization": 5.0,
+        "Mechanics": 5.0
+      },
+      "predicted_total": 17.0,
+      "gold_total": 24.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S02",
+      "predicted": {
+        "Thesis": 4.0,
+        "Evidence": 6.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 5.0,
+        "Evidence": 9.0,
+        "Organization": 4.0,
+        "Mechanics": 5.0
+      },
+      "predicted_total": 17.0,
+      "gold_total": 23.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S04",
+      "predicted": {
+        "Thesis": 4.0,
+        "Evidence": 6.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 4.0,
+        "Evidence": 7.0,
+        "Organization": 4.0,
+        "Mechanics": 4.0
+      },
+      "predicted_total": 17.0,
+      "gold_total": 19.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S06",
+      "predicted": {
+        "Thesis": 4.0,
+        "Evidence": 4.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 4.0,
+        "Evidence": 6.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "predicted_total": 15.0,
+      "gold_total": 17.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S08",
+      "predicted": {
+        "Thesis": 0.0,
+        "Evidence": 4.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 3.0,
+        "Evidence": 6.0,
+        "Organization": 3.0,
+        "Mechanics": 3.0
+      },
+      "predicted_total": 11.0,
+      "gold_total": 15.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S10",
+      "predicted": {
+        "Thesis": 0.0,
+        "Evidence": 0.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 3.0,
+        "Evidence": 3.0,
+        "Organization": 3.0,
+        "Mechanics": 3.0
+      },
+      "predicted_total": 7.0,
+      "gold_total": 12.0,
+      "needs_review": false,
+      "attempts": 1
+    },
+    {
+      "external_id": "S12",
+      "predicted": {
+        "Thesis": 0.0,
+        "Evidence": 0.0,
+        "Organization": 2.0,
+        "Mechanics": 3.0
+      },
+      "gold": {
+        "Thesis": 2.0,
+        "Evidence": 3.0,
+        "Organization": 2.0,
+        "Mechanics": 3.0
+      },
+      "predicted_total": 5.0,
+      "gold_total": 10.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S14",
+      "predicted": {
+        "Thesis": 0.0,
+        "Evidence": 0.0,
+        "Organization": 3.0,
+        "Mechanics": 3.0
+      },
+      "gold": {
+        "Thesis": 2.0,
+        "Evidence": 2.0,
+        "Organization": 2.0,
+        "Mechanics": 2.0
+      },
+      "predicted_total": 6.0,
+      "gold_total": 8.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S16",
+      "predicted": {
+        "Thesis": 2.0,
+        "Evidence": 0.0,
+        "Organization": 0.0,
+        "Mechanics": 2.0
+      },
+      "gold": {
+        "Thesis": 1.0,
+        "Evidence": 1.0,
+        "Organization": 1.0,
+        "Mechanics": 2.0
+      },
+      "predicted_total": 4.0,
+      "gold_total": 5.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S17",
+      "predicted": {
+        "Thesis": 0.0,
+        "Evidence": 4.0,
+        "Organization": 2.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 1.0,
+        "Evidence": 2.0,
+        "Organization": 1.0,
+        "Mechanics": 3.0
+      },
+      "predicted_total": 10.0,
+      "gold_total": 7.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S19",
+      "predicted": {
+        "Thesis": 0.0,
+        "Evidence": 4.0,
+        "Organization": 2.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 3.0,
+        "Evidence": 5.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "predicted_total": 10.0,
+      "gold_total": 15.0,
+      "needs_review": true,
+      "attempts": 1
+    },
+    {
+      "external_id": "S21",
+      "predicted": {
+        "Thesis": 4.0,
+        "Evidence": 6.0,
+        "Organization": 3.0,
+        "Mechanics": 4.0
+      },
+      "gold": {
+        "Thesis": 5.0,
+        "Evidence": 9.0,
+        "Organization": 4.0,
+        "Mechanics": 5.0
+      },
+      "predicted_total": 17.0,
+      "gold_total": 23.0,
+      "needs_review": true,
+      "attempts": 1
+    }
+  ]
+}

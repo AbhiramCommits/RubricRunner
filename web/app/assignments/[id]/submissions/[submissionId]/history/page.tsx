@@ -52,7 +52,7 @@ export default async function HistoryPage({ params }: PageProps) {
         </p>
       </div>
 
-      <ol className="relative space-y-3 border-l-2 border-slate-200 pl-6">
+      <ol data-testid="version-timeline" className="relative space-y-3 border-l-2 border-slate-200 pl-6">
         {versions.map((version) => (
           <li key={version.id} className="relative">
             <span
