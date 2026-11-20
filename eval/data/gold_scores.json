@@ -1,20 +1,85 @@
 {
   "assignment": "Argumentative Essay: Should cities ban cars downtown?",
   "max_points": 25,
-  "criteria": ["Thesis", "Evidence", "Organization", "Mechanics"],
+  "criteria": [
+    "Thesis",
+    "Evidence",
+    "Organization",
+    "Mechanics"
+  ],
   "labels": "Hand-scored by the course instructor against the four-criterion rubric. Twelve of the twenty-four seeded submissions are labeled.",
   "scores": {
-    "S01": {"Thesis": 5, "Evidence": 9, "Organization": 5, "Mechanics": 4},
-    "S02": {"Thesis": 5, "Evidence": 8, "Organization": 4, "Mechanics": 4},
-    "S04": {"Thesis": 4, "Evidence": 7, "Organization": 4, "Mechanics": 4},
-    "S06": {"Thesis": 4, "Evidence": 6, "Organization": 3, "Mechanics": 4},
-    "S08": {"Thesis": 3, "Evidence": 6, "Organization": 3, "Mechanics": 3},
-    "S10": {"Thesis": 3, "Evidence": 5, "Organization": 3, "Mechanics": 3},
-    "S12": {"Thesis": 2, "Evidence": 3, "Organization": 2, "Mechanics": 3},
-    "S14": {"Thesis": 2, "Evidence": 2, "Organization": 2, "Mechanics": 2},
-    "S16": {"Thesis": 1, "Evidence": 1, "Organization": 1, "Mechanics": 2},
-    "S17": {"Thesis": 1, "Evidence": 2, "Organization": 1, "Mechanics": 2},
-    "S19": {"Thesis": 3, "Evidence": 5, "Organization": 3, "Mechanics": 3},
-    "S21": {"Thesis": 5, "Evidence": 8, "Organization": 4, "Mechanics": 4}
+    "S01": {
+      "Thesis": 5,
+      "Evidence": 9,
+      "Organization": 5,
+      "Mechanics": 5
+    },
+    "S02": {
+      "Thesis": 5,
+      "Evidence": 9,
+      "Organization": 4,
+      "Mechanics": 5
+    },
+    "S04": {
+      "Thesis": 4,
+      "Evidence": 7,
+      "Organization": 4,
+      "Mechanics": 4
+    },
+    "S06": {
+      "Thesis": 4,
+      "Evidence": 6,
+      "Organization": 3,
+      "Mechanics": 4
+    },
+    "S08": {
+      "Thesis": 3,
+      "Evidence": 6,
+      "Organization": 3,
+      "Mechanics": 3
+    },
+    "S10": {
+      "Thesis": 3,
+      "Evidence": 3,
+      "Organization": 3,
+      "Mechanics": 3
+    },
+    "S12": {
+      "Thesis": 2,
+      "Evidence": 3,
+      "Organization": 2,
+      "Mechanics": 3
+    },
+    "S14": {
+      "Thesis": 2,
+      "Evidence": 2,
+      "Organization": 2,
+      "Mechanics": 2
+    },
+    "S16": {
+      "Thesis": 1,
+      "Evidence": 1,
+      "Organization": 1,
+      "Mechanics": 2
+    },
+    "S17": {
+      "Thesis": 1,
+      "Evidence": 2,
+      "Organization": 1,
+      "Mechanics": 3
+    },
+    "S19": {
+      "Thesis": 3,
+      "Evidence": 5,
+      "Organization": 3,
+      "Mechanics": 4
+    },
+    "S21": {
+      "Thesis": 5,
+      "Evidence": 9,
+      "Organization": 4,
+      "Mechanics": 5
+    }
   }
 }
