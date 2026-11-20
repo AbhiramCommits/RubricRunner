@@ -7,7 +7,6 @@ the same set of records, so repeated `make seed` calls converge on one state.
 from __future__ import annotations
 
 from datetime import UTC, datetime, timedelta
-from pathlib import Path
 
 from sqlalchemy import select, text
 from sqlalchemy.orm import Session, sessionmaker
@@ -546,7 +545,6 @@ people can walk safely and the city will be cleaner. That is why I support a ban
 def seed(
     session_factory: sessionmaker[Session] | None = None,
 ) -> dict[str, int]:
-    gold_path = Path(__file__).resolve().parent.parent / "eval" / "data" / "gold_scores.json"
     factory = session_factory or SessionLocal
     with factory() as session:
         existing = session.scalars(select(Course).where(Course.name == COURSE_NAME)).first()
@@ -607,7 +605,7 @@ def seed(
         print(f"Assignment #{assignment.id}: {ASSIGNMENT_TITLE}")
         print(f"Rubric criteria: {len(RUBRIC)} (max {assignment.max_points:g} points)")
         print(f"Students/submissions: {len(STUDENTS)}")
-        print(f"Gold labels: {gold_path} ({'present' if gold_path.exists() else 'MISSING'})")
+        print("Gold labels: eval/data/gold_scores.json (read by the offline eval harness)")
         return {"course_id": course.id, "assignment_id": assignment.id}
 
 

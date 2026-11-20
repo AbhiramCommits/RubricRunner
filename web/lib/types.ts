@@ -2,11 +2,6 @@
 // See README "Architecture" for the contract-sync approach. Run `make api-openapi`
 // to regenerate `openapi.json` and compare before changing these types.
 
-export interface Health {
-  status: string;
-  db: string;
-}
-
 export interface RubricCriterion {
   id: number;
   assignment_id: number;

@@ -12,7 +12,6 @@ import asyncio
 import logging
 from collections.abc import Callable
 from datetime import UTC, datetime
-from typing import Protocol
 
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session, sessionmaker
@@ -26,10 +25,6 @@ logger = logging.getLogger(__name__)
 
 _session_factory: sessionmaker[Session] = SessionLocal
 _provider_factory: Callable[[], LLMProvider] = build_provider
-
-
-class SessionFactoryLike(Protocol):
-    def __call__(self) -> Session: ...
 
 
 def configure_session_factory(factory: sessionmaker[Session]) -> None:

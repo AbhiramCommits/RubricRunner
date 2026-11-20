@@ -171,6 +171,3 @@ def get_prompt(version: str) -> PromptTemplate:
             f"Unknown prompt version {version!r}; available: {', '.join(REGISTRY)}"
         ) from exc
 
-
-def list_prompt_versions() -> list[str]:
-    return list(REGISTRY)

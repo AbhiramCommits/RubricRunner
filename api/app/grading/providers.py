@@ -552,7 +552,3 @@ def build_provider(name: str | None = None) -> LLMProvider:
         return OpenAIProvider()
     raise ValueError(f"Unknown LLM_PROVIDER: {choice}")
 
-
-def normalise_confidence(value: float) -> float:
-    """Clamp helper shared by the grader and eval harness."""
-    return max(0.0, min(1.0, math.floor(value * 100) / 100))

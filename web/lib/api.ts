@@ -32,9 +32,3 @@ export async function apiFetch<T>(path: string, init?: RequestInit): Promise<T> 
   }
   return (await response.json()) as T;
 }
-
-export type Health = { status: string; db: string };
-
-export async function getHealth(): Promise<Health> {
-  return apiFetch<Health>("/health");
-}
