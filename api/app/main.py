@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.db import SessionLocal
+from app.routers import assignments, feedback, submissions
 
 app = FastAPI(title="RubricRunner API", version="0.1.0")
 
@@ -13,6 +14,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(assignments.router)
+app.include_router(submissions.router)
+app.include_router(feedback.router)
 
 
 @app.get("/health")
