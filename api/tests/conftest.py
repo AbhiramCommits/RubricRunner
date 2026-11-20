@@ -67,11 +67,15 @@ def session_factory(engine: Engine) -> Generator[sessionmaker[Session], None, No
 
 
 @pytest.fixture()
-def client(engine: Engine) -> Generator[TestClient, None, None]:
-    testing_session = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
+def client(session_factory: sessionmaker[Session]) -> Generator[TestClient, None, None]:
+    from app.grading.providers import build_provider
+    from app.jobs.queue import configure_provider_factory, configure_session_factory
+
+    configure_session_factory(session_factory)
+    configure_provider_factory(build_provider)
 
     def override_session() -> Generator[Session, None, None]:
-        session = testing_session()
+        session = session_factory()
         try:
             yield session
         finally:
@@ -81,6 +85,14 @@ def client(engine: Engine) -> Generator[TestClient, None, None]:
     with TestClient(app) as test_client:
         yield test_client
     app.dependency_overrides.clear()
+    configure_provider_factory(build_provider)
+
+
+@pytest.fixture()
+def seeded(session_factory: sessionmaker[Session]) -> dict[str, int]:
+    from seed import seed
+
+    return seed(session_factory)
 
 
 @pytest.fixture()

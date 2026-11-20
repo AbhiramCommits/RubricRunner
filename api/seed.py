@@ -10,6 +10,7 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 
 from sqlalchemy import select, text
+from sqlalchemy.orm import Session, sessionmaker
 
 from app.db import SessionLocal
 from app.models import Assignment, Base, Course, RubricCriterion, Student, Submission
@@ -542,9 +543,12 @@ people can walk safely and the city will be cleaner. That is why I support a ban
 ]
 
 
-def seed() -> None:
+def seed(
+    session_factory: sessionmaker[Session] | None = None,
+) -> dict[str, int]:
     gold_path = Path(__file__).resolve().parent.parent / "eval" / "data" / "gold_scores.json"
-    with SessionLocal() as session:
+    factory = session_factory or SessionLocal
+    with factory() as session:
         existing = session.scalars(select(Course).where(Course.name == COURSE_NAME)).first()
         if existing is not None:
             session.delete(existing)
@@ -604,6 +608,7 @@ def seed() -> None:
         print(f"Rubric criteria: {len(RUBRIC)} (max {assignment.max_points:g} points)")
         print(f"Students/submissions: {len(STUDENTS)}")
         print(f"Gold labels: {gold_path} ({'present' if gold_path.exists() else 'MISSING'})")
+        return {"course_id": course.id, "assignment_id": assignment.id}
 
 
 if __name__ == "__main__":

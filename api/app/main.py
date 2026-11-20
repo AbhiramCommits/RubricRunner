@@ -1,11 +1,25 @@
+from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.db import SessionLocal
-from app.routers import assignments, feedback, submissions
+from app.jobs.queue import grading_queue
+from app.routers import assignments, feedback, grading, submissions
 
-app = FastAPI(title="RubricRunner API", version="0.1.0")
+
+@asynccontextmanager
+async def lifespan(_: FastAPI) -> AsyncIterator[None]:
+    await grading_queue.start()
+    try:
+        yield
+    finally:
+        await grading_queue.stop()
+
+
+app = FastAPI(title="RubricRunner API", version="0.1.0", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,6 +32,7 @@ app.add_middleware(
 app.include_router(assignments.router)
 app.include_router(submissions.router)
 app.include_router(feedback.router)
+app.include_router(grading.router)
 
 
 @app.get("/health")

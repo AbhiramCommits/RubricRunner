@@ -530,6 +530,17 @@ class MockProvider:
         )
 
 
+def provider_metadata() -> tuple[str, str]:
+    """Provider name and model recorded on a run without constructing a client."""
+    settings = get_settings()
+    choice = (settings.llm_provider or "mock").lower()
+    if choice == "anthropic":
+        return "anthropic", settings.anthropic_model
+    if choice == "openai":
+        return "openai", settings.openai_model
+    return "mock", MockProvider.model
+
+
 def build_provider(name: str | None = None) -> LLMProvider:
     settings = get_settings()
     choice = (name or settings.llm_provider or "mock").lower()
